@@ -39,7 +39,6 @@ function App() {
     }
   };
 
-  // Bug 1: Reference equality issue causing duplicate todos
   const addTodo = () => {
     if (inputText.trim()) {
       const newTodo: Todo = {
@@ -47,7 +46,6 @@ function App() {
         text: inputText,
         completed: false,
       };
-      // Bug: Using spread operator incorrectly
       setTodos((prevTodos) => [
         ...prevTodos,
         prevTodos[prevTodos.length - 1] || newTodo,
@@ -56,10 +54,8 @@ function App() {
     }
   };
 
-  // Bug 2: Incorrect count calculation
   const incompleteTodosCount = todos.filter((todo) => todo.completed).length;
 
-  // Bug 3: State update issue in markAllComplete
   const markAllComplete = () => {
     const updatedTodos = todos;
     updatedTodos.forEach((todo) => {
